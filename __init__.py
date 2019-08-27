@@ -347,7 +347,7 @@ class LFPropertyGroup(bpy.types.PropertyGroup):
         return "LF%s_Frustum" % self.setup_number
 
     def get_camera_name(self, i, j):
-        return "LF%s_Cam%3.3i_lf" % (self.setup_number, i*self.num_cams_x+j)
+        return "LF%s_Cam%3.3i" % (self.setup_number, i*self.num_cams_x+j)
 
     def get_lightfield_name(self):
         return "LF%s" % self.setup_number

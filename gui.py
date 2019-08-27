@@ -83,7 +83,7 @@ class VIEW3D_OT_lightfield_setup(bpy.types.Panel):
         col.prop(LF, "save_depth_for_all_views")
         col.prop(LF, "save_object_id_maps_for_all_views")
         col.operator("scene.render_lightfield", "Render Light Field", icon="HAND")
-
+        col.operator("scene.bind_to_frames", "Bind to Frames", icon="HAND")
         col = layout.column(align=True)
         col.label("Meta information:")
         col.prop(LF, "scene")
