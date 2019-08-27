@@ -621,6 +621,7 @@ class OBJECT_OT_render_lightfield(bpy.types.Operator):
     @staticmethod
     def get_raw_camera_name(camera_name):
         prefix, camera = camera_name.split("_Cam")
+        # camera, lf = cameraWithLF.split("_lf")
         return "Cam" + camera
 
     @staticmethod
