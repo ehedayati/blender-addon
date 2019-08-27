@@ -639,6 +639,31 @@ class OBJECT_OT_render_lightfield(bpy.types.Operator):
         os.rename(blender_filename, final_filename)
 
 
+class OBJECT_OT_bind_to_frames(bpy.types.Operator):
+    """Create the frustum preview"""
+    bl_idname = "scene.bind_to_frames"
+    bl_label = """Bind Cameras to frames"""
+    bl_options = {'REGISTER'}
+
+    def execute(self, context):
+        LF = bpy.context.scene.LF
+        cameras = LF.get_lightfield_cameras()
+        numberOfCameras = len(cameras)
+        bpy.context.scene.frame_end = numberOfCameras
+        for markerName, marker in enumerate(bpy.context.scene.timeline_markers.items()):
+            bpy.context.scene.timeline_markers.remove(bpy.context.scene.timeline_markers[marker[0]])
+        bpy.context.scene.frame_current = 1
+        for cam_idx, camera in enumerate(cameras):
+            bpy.context.scene.timeline_markers.new('camBind' + str(cam_idx), bpy.context.scene.frame_current)
+            bpy.context.scene.timeline_markers['camBind' + str(cam_idx)].camera = camera
+            bpy.context.scene.frame_current = bpy.context.scene.frame_current + 1
+        # try:
+        #     pass
+        # except KeyError:
+        #     print("Could not find frustum '%s' to show." % frustum_name)
+        return {'FINISHED'}
+
+
 def write_pfm(data, fpath):
     with open(fpath, 'wb') as file:
         # header
