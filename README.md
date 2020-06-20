@@ -45,3 +45,5 @@ The 4D Light Field Benchmark was jointly created by the University of Konstanz a
  organization={Springer} 
  } 
  
+ # Updates by Eisa
+ Now there is a new button which bindes each camera to a frame. Native animation render now can be used to extract images from each camera in the array. Specifically useful for "Modeling standard plenoptic camera by an equivalent camera array" paper. Use the extraced images to feed the code [here](https://github.com/ehedayati/Modeling-standard-plenoptic-camera-by-an-equivalent-camera-array)
